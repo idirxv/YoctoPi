@@ -1,0 +1,4 @@
+[submodule "layers/meta-raspberrypi"]
+	path = layers/meta-raspberrypi
+	url = git://git.yoctoproject.org/meta-raspberrypi
+	branch = scarthgap
