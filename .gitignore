@@ -1,0 +1,25 @@
+# Yocto build directories
+build/
+tmp/
+sstate-cache/
+cache/
+downloads/
+
+# Yocto generated files
+*.lock
+*.log
+*.run
+*.pyc
+*.pyo
+*.swp
+*.swo
+
+# Yocto SDK
+sdk/
+
+# Other
+*.bak
+*.tmp
+*.swp
+*.swo
+.DS_Store
