@@ -1,6 +1,7 @@
 MACHINE ??= "raspberrypi4-64"
 
 DISTRO ?= "poky"
+PACKAGE_CLASSES ?= "package_ipk"
 EXTRA_IMAGE_FEATURES ?= "debug-tweaks"
 USER_CLASSES ?= "buildstats"
 PATCHRESOLVE = "noop"
@@ -17,3 +18,27 @@ BB_DISKMON_DIRS ??= "\
 
 PACKAGECONFIG:append:pn-qemu-system-native = " sdl"
 CONF_VERSION = "2"
+
+IMAGE_FSTYPES:remove = " wic.bz2"
+IMAGE_FSTYPES:append = " wic.gz"
+IMAGE_FSTYPES:append = " wic"
+
+DISTRO_FEATURES:append = " virtualization"
+
+# Use systemd (recommended for Docker)
+DISTRO_FEATURES:append = " systemd usrmerge"
+VIRTUAL-RUNTIME_init_manager = "systemd"
+VIRTUAL-RUNTIME_initscripts = ""
+
+# RPi extras
+RPI_USE_U_BOOT = "1"
+RPI_BOOTLOADER_USE_FIRMWARE = "1"
+IMAGE_ROOTFS_EXTRA_SPACE = "16777216"
+
+LICENSE_FLAGS_ACCEPTED += "synaptics-killswitch"
+
+# Multi-core build
+# BB_NUMBER_THREADS = "6"
+# PARALLEL_MAKE = "-j 6"
+
+PREFERRED_VERSION_python3-fail2ban = "1.1.0"
