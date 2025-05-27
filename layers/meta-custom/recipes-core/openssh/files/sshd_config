@@ -1,0 +1,7 @@
+# SSH port configured via systemd socket (sshd.socket.d/portoverride.conf)
+# Not controlled by Port directive in this file
+Port 2222
+PermitRootLogin prohibit-password
+PasswordAuthentication no
+PubkeyAuthentication yes
+AuthorizedKeysFile .ssh/authorized_keys
