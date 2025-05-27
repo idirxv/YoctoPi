@@ -17,3 +17,40 @@ BB_DISKMON_DIRS ??= "\
 
 PACKAGECONFIG:append:pn-qemu-system-native = " sdl"
 CONF_VERSION = "2"
+
+IMAGE_FSTYPES:remove = " wic.bz2"
+IMAGE_FSTYPES:append = " wic.gz"
+IMAGE_FSTYPES:append = " wic"
+
+DISTRO_FEATURES:append = " virtualization"
+
+# Use systemd (recommended for Docker)
+DISTRO_FEATURES:append = " systemd usrmerge"
+VIRTUAL-RUNTIME_init_manager = "systemd"
+VIRTUAL-RUNTIME_initscripts = ""
+
+# Enable docker user creation in base-files
+EXTRA_USERS_ENABLE_DOCKERUSER = "1"
+
+# RPi extras
+RPI_USE_U_BOOT = "1"
+RPI_BOOTLOADER_USE_FIRMWARE = "1"
+IMAGE_ROOTFS_EXTRA_SPACE = "1048576"
+
+LICENSE_FLAGS_ACCEPTED += "synaptics-killswitch"
+
+# Multi-core build
+# BB_NUMBER_THREADS = "6"
+# PARALLEL_MAKE = "-j 6"
+
+# WiFi auto-connect
+IMAGE_INSTALL:append = " wifi-autoconnect"
+
+# Security
+EXTRA_IMAGE_FEATURES = ""
+DISTRO_FEATURES:append = " seccomp"
+IMAGE_INSTALL:append = " iptables python3-fail2ban"
+# Remove root password
+EXTRA_USERS_PARAMS += "usermod -p '*' root;"
+# Add SSH keys for root
+IMAGE_INSTALL:append = " my-ssh-key"
