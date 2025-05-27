@@ -10,3 +10,7 @@
 	path = layers/meta-virtualization
 	url = git://git.yoctoproject.org/meta-virtualization
 	branch = scarthgap
+[submodule "layers/meta-openembedded"]
+	path = layers/meta-openembedded
+	url = https://github.com/openembedded/meta-openembedded.git
+	branch = scarthgap
