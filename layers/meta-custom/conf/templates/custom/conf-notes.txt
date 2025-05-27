@@ -7,3 +7,4 @@ Targets are:
     rpi-test-image
     core-image-minimal
     core-image-base
+    core-image-base-docker
