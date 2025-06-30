@@ -17,5 +17,6 @@ BBLAYERS ?= " \
   ##OEROOT##/../meta-openembedded/meta-webserver \
   ##OEROOT##/../meta-security \
   ##OEROOT##/../meta-virtualization \
+  ##OEROOT##/../meta-iot-cloud \
   ##OEROOT##/../meta-custom \
   "
