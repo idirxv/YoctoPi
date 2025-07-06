@@ -21,6 +21,8 @@ IMAGE_INSTALL:append = " \
     git \
     curl \
     nginx \
+    rclone \
+    fuse3 \
 "
 
 # Add user creation
