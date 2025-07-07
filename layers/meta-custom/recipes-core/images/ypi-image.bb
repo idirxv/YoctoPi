@@ -26,6 +26,7 @@ IMAGE_INSTALL:append = " \
     nginx \
     rclone \
     fuse3 \
+    log2ram \
 "
 
 # Add user creation
