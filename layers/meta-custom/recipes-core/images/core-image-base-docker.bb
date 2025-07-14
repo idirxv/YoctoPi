@@ -44,6 +44,4 @@ IMAGE_INSTALL:append = " my-ssh-key"
 IMAGE_INSTALL:append = " wifi-autoconnect"
 
 ## Security
-EXTRA_IMAGE_FEATURES = ""
-DISTRO_FEATURES:append = " seccomp"
 IMAGE_INSTALL:append = " iptables ufw python3-fail2ban"
