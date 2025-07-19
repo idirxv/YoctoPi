@@ -33,3 +33,6 @@ GPU_MEM = "256"
 
 # Ignore meta-security layer warning
 SKIP_META_SECURITY_SANITY_CHECK = "1"
+
+# ypiuser password hash ("pass" by default)
+# YPI_PASSWORD_HASH = ""

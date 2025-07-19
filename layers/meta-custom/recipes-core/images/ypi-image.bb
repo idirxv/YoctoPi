@@ -32,14 +32,18 @@ IMAGE_INSTALL:append = " \
 # Add user creation
 inherit extrausers
 
-# Set dockeruser password (dockerpass) and group
+# Setup root and ypiuser
+# default password "pass"
+YPI_PASSWORD_HASH ??= "\$6\$9zy7484WukBEu6D8\$TnxDaRn7/DFtw2ZcyW.26C.x76R1RN/X54eCnkD6QySeKA2YjZR7nNVLiqbps7uUlNiXCrfCLF36OB1i0LZ2s."
 EXTRA_USERS_PARAMS = "\
-    useradd -p '\$6\$S8cPTQJi9ze9yek4\$StA5d9DwklinSewNtHOgFH6dunVBzkPwMoDOuzWAlBRTUTf9FhjCmqayTYzYekM1SbU0S6rOZDlqcBIswNg9R1' dockeruser; \
-    usermod -aG docker dockeruser; \
+    usermod -p '*' -s /bin/bash root; \
+    useradd -p '${YPI_PASSWORD_HASH}' -d /home/ypiuser -m -s /bin/bash ypiuser; \
+    usermod -aG docker,video,sudo ypiuser; \
 "
-
-# Remove root password
-EXTRA_USERS_PARAMS += "usermod -p '*' root;"
+enable_sudo_group() {
+    sed -i 's/^# %sudo/%sudo/' ${IMAGE_ROOTFS}/etc/sudoers
+}
+ROOTFS_POSTPROCESS_COMMAND += "enable_sudo_group;"
 
 # Add SSH keys for root
 IMAGE_INSTALL:append = " my-ssh-key"
