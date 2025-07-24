@@ -23,10 +23,10 @@ IMAGE_INSTALL:append = " \
     htop \
     git \
     curl \
-    nginx \
     rclone \
     fuse3 \
     log2ram \
+    caddy \
 "
 
 # Add user creation

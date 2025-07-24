@@ -1,0 +1,9 @@
+:80 {
+    # Print a simple message
+    respond "Welcome to caddy server"
+
+    # Optional : add logging
+    log {
+        output stdout
+    }
+}
