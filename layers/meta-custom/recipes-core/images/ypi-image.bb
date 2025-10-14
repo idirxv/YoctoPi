@@ -47,3 +47,7 @@ ROOTFS_POSTPROCESS_COMMAND += "enable_sudo_group;"
 
 ## Security
 IMAGE_INSTALL:append = " iptables ufw python3-fail2ban"
+
+# Timezone
+IMAGE_INSTALL:append = " tzdata"
+DEFAULT_TIMEZONE = "Europe/Paris"
