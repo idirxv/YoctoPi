@@ -48,8 +48,5 @@ ROOTFS_POSTPROCESS_COMMAND += "enable_sudo_group;"
 # Add SSH keys for root
 IMAGE_INSTALL:append = " my-ssh-key"
 
-# WiFi auto-connect
-IMAGE_INSTALL:append = " wifi-autoconnect"
-
 ## Security
 IMAGE_INSTALL:append = " iptables ufw python3-fail2ban"
