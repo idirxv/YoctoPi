@@ -3,9 +3,9 @@ require recipes-core/images/core-image-base.bb
 # Add SSH server
 IMAGE_FEATURES += "ssh-server-openssh"
 
-# Include package management
+# Package management
 IMAGE_FEATURES += "package-management"
-IMAGE_INSTALL:append = " opkg"
+IMAGE_INSTALL:append = " apt"
 
 # Add docker support
 IMAGE_INSTALL:append = " \
