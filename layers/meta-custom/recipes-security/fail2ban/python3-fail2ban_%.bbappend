@@ -1,6 +1,5 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
-SRC_URI += "file://jail.local"
 
 SYSTEMD_AUTO_ENABLE = "enable"
 
