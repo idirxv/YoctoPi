@@ -30,3 +30,5 @@ RPI_USE_U_BOOT = "1"
 # BB_NUMBER_THREADS = "6"
 # PARALLEL_MAKE = "-j 6"
 
+# Ignore meta-security layer warning
+SKIP_META_SECURITY_SANITY_CHECK = "1"
