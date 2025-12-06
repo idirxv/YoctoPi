@@ -45,8 +45,5 @@ enable_sudo_group() {
 }
 ROOTFS_POSTPROCESS_COMMAND += "enable_sudo_group;"
 
-# Add SSH keys for root
-IMAGE_INSTALL:append = " my-ssh-key"
-
 ## Security
 IMAGE_INSTALL:append = " iptables ufw python3-fail2ban"
