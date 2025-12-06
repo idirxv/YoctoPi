@@ -4,7 +4,7 @@
 You can now run 'bitbake <target>'
 
 Targets are:
+    ypi-image
     rpi-test-image
     core-image-minimal
     core-image-base
-    core-image-base-docker
