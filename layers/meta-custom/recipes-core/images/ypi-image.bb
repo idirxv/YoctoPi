@@ -1,5 +1,8 @@
 require recipes-core/images/core-image-base.bb
 
+# Minimal rootfs size 2GB
+IMAGE_ROOTFS_SIZE = "2097152"
+
 # Add SSH server
 IMAGE_FEATURES += "ssh-server-openssh"
 
