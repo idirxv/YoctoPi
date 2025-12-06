@@ -36,3 +36,10 @@ SKIP_META_SECURITY_SANITY_CHECK = "1"
 
 # ypiuser password hash ("pass" by default)
 # YPI_PASSWORD_HASH = ""
+
+# Custom SSH port
+# SSH_PORT = "2222"
+
+# SSH Public Key
+# IMAGE_INSTALL:append = " ssh-keys"
+# SSH_PUBLIC_KEY = "ssh-rsa AAAAB3... user@host"
