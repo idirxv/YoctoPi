@@ -25,6 +25,7 @@ IMAGE_FSTYPES:append = " wic"
 
 # RPi extras
 RPI_USE_U_BOOT = "1"
+GPU_MEM = "256"
 
 # Multi-core build
 # BB_NUMBER_THREADS = "6"
