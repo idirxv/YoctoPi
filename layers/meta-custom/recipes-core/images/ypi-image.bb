@@ -19,14 +19,13 @@ IMAGE_INSTALL:append = " \
 # Add common utilities
 IMAGE_INSTALL:append = " \
     ca-certificates \
-    nano \
-    htop \
-    git \
-    curl \
-    rclone \
-    fuse3 \
-    log2ram \
     caddy \
+    curl \
+    fuse3 \
+    git \
+    nano \
+    rclone \
+    wireguard-tools \
 "
 
 # Add user creation
@@ -45,8 +44,17 @@ enable_sudo_group() {
 }
 ROOTFS_POSTPROCESS_COMMAND += "enable_sudo_group;"
 
-## Security
-IMAGE_INSTALL:append = " iptables ufw python3-fail2ban"
+# System tools and monitoring
+IMAGE_INSTALL:append = " \
+    gnupg \
+    htop \
+    iptables \
+    log2ram \
+    python3-fail2ban \
+    rsyslog \
+    sudo \
+    ufw \
+"
 
 # Timezone
 IMAGE_INSTALL:append = " tzdata"
