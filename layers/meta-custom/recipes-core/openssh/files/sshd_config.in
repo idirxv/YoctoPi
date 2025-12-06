@@ -1,7 +1,6 @@
-# SSH port configured via systemd socket (sshd.socket.d/portoverride.conf)
-# Not controlled by Port directive in this file
 Port @SSH_PORT@
-PermitRootLogin prohibit-password
+PermitRootLogin no
+AllowUsers ypiuser
 PasswordAuthentication no
 PubkeyAuthentication yes
 AuthorizedKeysFile .ssh/authorized_keys
