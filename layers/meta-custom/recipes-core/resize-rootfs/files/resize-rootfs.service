@@ -1,0 +1,13 @@
+[Unit]
+Description=Resize RootFS to fill SD card
+After=local-fs.target
+Requires=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/resize-script.sh
+# Disable service on success
+ExecStartPost=/bin/systemctl disable resize-rootfs.service
+
+[Install]
+WantedBy=sysinit.target
