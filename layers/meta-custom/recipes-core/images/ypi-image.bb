@@ -1,61 +1,75 @@
 require recipes-core/images/core-image-base.bb
 
-# Minimal rootfs size 2GB
-IMAGE_ROOTFS_SIZE = "2097152"
-
-# Add SSH server
+# --- Core Settings ---
+# Enable SSH
 IMAGE_FEATURES += "ssh-server-openssh"
 
 # Package management
 IMAGE_FEATURES += "package-management"
 IMAGE_INSTALL:append = " apt"
 
-# Add docker support
+# Set default timezone
+IMAGE_INSTALL:append = " tzdata"
+DEFAULT_TIMEZONE = "Europe/Paris"
+
+# --- Container & Virtualization ---
 IMAGE_INSTALL:append = " \
     docker \
     docker-compose \
 "
 
-# Add common utilities
+# --- NAS, Storage & Filesystems ---
 IMAGE_INSTALL:append = " \
-    ca-certificates \
+    btrfs-tools \
+    fuse3 \
+    hdparm \
+    mdadm \
+    nfs-utils \
+    rclone \
+    samba \
+    smartmontools \
+"
+
+# --- Networking & Security ---
+IMAGE_INSTALL:append = " \
     caddy \
     curl \
-    fuse3 \
-    git \
-    nano \
-    rclone \
+    gnupg \
+    iperf3 \
+    iptables \
+    python3-fail2ban \
+    ufw \
     wireguard-tools \
+"
+
+# --- System Tools & Utilities ---
+IMAGE_INSTALL:append = " \
+    apt \
+    ca-certificates \
+    git \
+    htop \
+    jq \
+    log2ram \
+    nano \
+    resize-rootfs \
+    rsyslog \
+    sudo \
 "
 
 # Add user creation
 inherit extrausers
 
-# Setup root and ypiuser
-# default password "pass"
+# Password: "pass" (SHA512 hash)
 YPI_PASSWORD_HASH ??= "\$6\$9zy7484WukBEu6D8\$TnxDaRn7/DFtw2ZcyW.26C.x76R1RN/X54eCnkD6QySeKA2YjZR7nNVLiqbps7uUlNiXCrfCLF36OB1i0LZ2s."
+
+# Create 'ypiuser', set passwords, and add groups
 EXTRA_USERS_PARAMS = "\
     usermod -p '*' -s /bin/bash root; \
     useradd -p '${YPI_PASSWORD_HASH}' -d /home/ypiuser -m -s /bin/bash ypiuser; \
-    usermod -aG docker,video,sudo ypiuser; \
+    usermod -aG docker,video,render,sudo ypiuser; \
 "
+
 enable_sudo_group() {
     sed -i 's/^# %sudo/%sudo/' ${IMAGE_ROOTFS}/etc/sudoers
 }
 ROOTFS_POSTPROCESS_COMMAND += "enable_sudo_group;"
-
-# System tools and monitoring
-IMAGE_INSTALL:append = " \
-    gnupg \
-    htop \
-    iptables \
-    log2ram \
-    python3-fail2ban \
-    rsyslog \
-    sudo \
-    ufw \
-"
-
-# Timezone
-IMAGE_INSTALL:append = " tzdata"
-DEFAULT_TIMEZONE = "Europe/Paris"
