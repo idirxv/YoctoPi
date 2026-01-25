@@ -79,6 +79,8 @@ EXTRA_USERS_PARAMS = "\
 "
 
 enable_sudo_group() {
-    sed -i 's/^# %sudo/%sudo/' ${IMAGE_ROOTFS}/etc/sudoers
+    install -d ${IMAGE_ROOTFS}/etc/sudoers.d
+    echo "%sudo ALL=(ALL) ALL" > ${IMAGE_ROOTFS}/etc/sudoers.d/ypi-sudo
+    chmod 0440 ${IMAGE_ROOTFS}/etc/sudoers.d/ypi-sudo
 }
 ROOTFS_POSTPROCESS_COMMAND += "enable_sudo_group;"
