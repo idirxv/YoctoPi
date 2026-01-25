@@ -1,4 +1,11 @@
-MACHINE ??= "raspberrypi4-64"
+# Raspberry Pi 4
+# MACHINE ??= "raspberrypi4-64"
+# RPI_USE_U_BOOT = "1"
+# GPU_MEM = "256"
+
+# Radxa Rock 5C
+# MACHINE ??= "rockchip-rk3588s-rock-5c"
+# INHERIT:append = " rockchip-image"
 
 DISTRO ?= "yoctopi"
 PACKAGE_CLASSES ?= "package_ipk"
@@ -22,10 +29,6 @@ CONF_VERSION = "2"
 IMAGE_FSTYPES:remove = " wic.bz2"
 IMAGE_FSTYPES:append = " wic.gz"
 IMAGE_FSTYPES:append = " wic"
-
-# RPi extras
-RPI_USE_U_BOOT = "1"
-GPU_MEM = "256"
 
 # Multi-core build
 # BB_NUMBER_THREADS = "6"
