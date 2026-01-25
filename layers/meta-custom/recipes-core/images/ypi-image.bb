@@ -18,6 +18,15 @@ IMAGE_INSTALL:append = " \
     docker-compose \
 "
 
+# --- Hardware Acceleration (Rockchip RK3588) ---
+IMAGE_INSTALL:append = " \
+    rockchip-libmali \
+    rockchip-librga \
+    rockchip-mpp \
+    rockchip-npu \
+    udev-conf-rockchip \
+"
+
 # --- NAS, Storage & Filesystems ---
 IMAGE_INSTALL:append = " \
     btrfs-tools \
